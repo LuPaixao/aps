@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Administrador</title>
+</h:head>
+<h:body style="background-color: #d9d9ec;">
+
+	<div style="margin-bottom: 20px;">
+		<h:form id="formulario">
+			<p:panelGrid columns="1"
+				style=" width: 25%;  border: 2px solid #669bbc;">
+				<p:outputLabel value="Documento" />
+				<p:inputText id="paciente" value="#{pacienteBean.paciente.documento}"
+					required="true" requiredMessage="Campo obrigatório" />
+			</p:panelGrid>
+			<p:panelGrid columns="2"
+				style=" width: 25%;  border: 2px solid #669bbc;">
+				<p:outputLabel value="Nome" />
+				<p:inputText value="#{pacienteBean.paciente.nome}"
+					required="true" requiredMessage="Campo obrigatório" />
+			</p:panelGrid>
+			<p:panelGrid columns="2"
+				style=" width: 25%;  border: 2px solid #669bbc;">
+				<p:outputLabel value="Sexo" />
+				<p:inputText value="#{pacienteBean.paciente.sexo}"
+					required="true" requiredMessage="Campo obrigatório" />
+			</p:panelGrid>
+			<p:panelGrid columns="1"
+					style="width: 25%; border: 2px solid #669bbc;">
+
+					<h:outputLabel value="Data:" />
+					<p:calendar id="date"
+						value="#{pacienteBean.paciente.dataNascimento}" showIcon="true"  showButtonBar="true" showTime="true" timeInput="true"  required="true" requiredMessage="Campo obrigatório"/>
+			</p:panelGrid>
+				<p:panelGrid columns="1"
+					style=" width: 25%; border: 2px solid #669bbc; ">
+
+					<p:outputLabel value="Imc" />
+					<p:selectOneMenu value="#{pacienteBean.idImcSelecionado}" required="true" requiredMessage="Campo obrigatório">
+						<f:selectItems value="#{pacienteBean.imc}" var="imc" itemLabel="#{imc.resultado}" itemValue="#{imc.id}" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+			
+			<div style="margin-top: 20px">
+				<p:commandButton  action="#{pacienteBean.salvar}"
+					value="Salvar" update="formulario"
+					style="background-color: #1b2144" />
+			</div>
+		</h:form>
+		
+		<div style="margin-top: 20px">
+			<p:link outcome="listarPaciente" value="Listar"
+				style="font-size: 20" />
+		</div>
+		
+		<div style="margin-top: 20px">
+			<p:link outcome="dashboard" value="Voltar"
+				style="font-size: 20" />
+		</div>
+		
+	</div>
+
+</h:body>
+</html>

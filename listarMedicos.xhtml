@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Listar IMC</title>
+</h:head>
+<h:body style="background-color: #d9d9ec;">
+
+<h1 style="font-family: Arial, sans-serif; font-weight: 600;">Listagem Médicos</h1>
+	<h3 style="font-family: Arial, sans-serif; font-weight: normal;">Confira
+		abaixo todos os médicos!</h3>
+
+ 	<p:dataTable value="#{medicoBean.listarMedicos()}" var="medico">
+        <p:column headerText="ID">
+            <h:outputText value="#{medico.id}" />
+        </p:column>
+        <p:column headerText="Nome">
+            <h:outputText value="#{medico.nome}" />
+        </p:column>
+    </p:dataTable>
+
+	<div style="margin-top: 20px">
+			<p:link outcome="administrador" value="Voltar"
+				style="font-size: 20" />
+	</div>
+		
+</h:body>
+</html>

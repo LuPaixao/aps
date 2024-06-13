@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Consulta</title>
+</h:head>
+<h:body style="background-color: #d9d9ec;">
+
+	<div style="margin-bottom: 20px;">
+		<h:form id="formulario">
+			
+			<p:panelGrid columns="2"
+				style=" width: 25%;  border: 2px solid #669bbc;">
+				<p:outputLabel value="Queixa" />
+				<p:inputText value="#{consultaBean.consulta.queixa}"
+					required="true" requiredMessage="Campo obrigatório" />
+			</p:panelGrid>
+				<p:panelGrid columns="1"
+					style=" width: 25%; border: 2px solid #669bbc;">
+
+					<p:outputLabel value="Médico" />
+					<p:selectOneMenu value="#{consultaBean.idMedicoSelecionado}" required="true" requiredMessage="Campo obrigatório">
+						<f:selectItems value="#{consultaBean.medicos}" var="medico" itemLabel="#{medico.nome}" itemValue="#{medico.id}" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+			<p:panelGrid columns="1"
+					style=" width: 25%; border: 2px solid #669bbc;">
+
+					<p:outputLabel value="Paciente" />
+					<p:selectOneMenu value="#{consultaBean.idPacienteSelecionado}" required="true" requiredMessage="Campo obrigatório">
+						<f:selectItems value="#{consultaBean.pacientes}" var="paciente" itemLabel="#{paciente.nome}" itemValue="#{paciente.id}" />
+					</p:selectOneMenu>
+				</p:panelGrid>		
+				
+			<p:panelGrid columns="2"
+				style=" width: 25%;  border: 2px solid #669bbc;">
+				<p:outputLabel value="Diagnóstico" />
+				<p:inputText value="#{consultaBean.consulta.diagnostico}"
+					required="true" requiredMessage="Campo obrigatório" />
+			</p:panelGrid>
+			
+			<div style="margin-bottom: 20px;">
+				<p:panelGrid columns="1"
+					style=" width: 25%; border: 2px solid #669bbc;">
+
+					<p:outputLabel value="Agendamento" />
+					<p:selectOneMenu value="#{consultaBean.idAgendaSelecionada}" required="true" requiredMessage="Campo obrigatório">
+						<f:selectItems value="#{consultaBean.agenda}" var="agenda" itemLabel="#{agenda.id}" itemValue="#{agenda.id}" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+			</div>
+			
+			<div style="margin-top: 20px">
+				<p:commandButton  action="#{consultaBean.salvar()}"
+					value="Salvar" update="formulario"
+					style="background-color: #1b2144" />
+			</div>
+		</h:form>
+		
+		<div style="margin-top: 20px">
+			<p:link outcome="dashboard" value="Voltar"
+				style="font-size: 20" />
+		</div>
+		
+	</div>
+
+</h:body>
+</html>

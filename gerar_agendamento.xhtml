@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Agendamento</title>
+</h:head>
+<h:body style="background-color: #d9d9ec;">
+	<h:form id="formulario">
+	
+	<p:messages autoUpdate="true"/>
+	
+		<div>
+			<h1 style="font-family: Arial, sans-serif; font-weight: 600;">Faça
+				agendamentos de forma mais eficiente!</h1>
+			<h3 style="font-family: Arial, sans-serif; font-weight: normal;">Preencha
+				as informações abaixo</h3>
+				
+			<div style="margin-bottom: 20px;">
+				<p:panelGrid columns="2"
+					style=" width: 25%;  border: 2px solid #669bbc;">
+					<p:outputLabel value="Nome" />
+					<p:inputText value="#{agendamentoBean.agenda.nome}"  required="true" requiredMessage="Campo obrigatório"/>
+				</p:panelGrid>
+			</div>
+
+			<div style="margin-bottom: 20px;">
+				<p:panelGrid columns="2"
+					style=" width: 25%;  border: 2px solid #669bbc;">
+					<p:outputLabel value="Email" />
+					<p:inputText value="#{agendamentoBean.agenda.email}"  required="true" requiredMessage="Campo obrigatório"/>
+				</p:panelGrid>
+			</div>
+
+
+			<div style="margin-bottom: 20px;">
+				<p:panelGrid columns="1"
+					style=" width: 25%; border: 2px solid #669bbc;">
+
+					<p:outputLabel value="Médico" />
+					<p:selectOneMenu value="#{agendamentoBean.idMedicoSelecionado}" required="true" requiredMessage="Campo obrigatório">
+						<f:selectItems value="#{agendamentoBean.medicos}" var="medico" itemLabel="#{medico.nome}" itemValue="#{medico.id}" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+			</div>
+			
+			<div style="margin-bottom: 20px;">
+				<p:panelGrid columns="1"
+					style=" width: 25%; border: 2px solid #669bbc;">
+
+					<p:outputLabel value="Clínica" />
+					<p:selectOneMenu value="#{agendamentoBean.agenda.clinica}"  required="true" requiredMessage="Campo obrigatório">
+						<f:selectItem itemLabel="Selecione uma Clínica" itemValue="" />
+						<f:selectItem itemLabel="Hapvida Dom Luís" itemValue="Hapvida Dom Luís" />
+						<f:selectItem itemLabel="Hapvida Luis de França" itemValue="Hapvida Luis de França" />
+						<f:selectItem itemLabel="Hapvida Antônio Prudente" itemValue="Hapvida Antônio Prudente" />
+					</p:selectOneMenu>
+
+				</p:panelGrid>
+			</div>
+			
+
+			<div style="margin-top: 20px;">
+				<p:panelGrid columns="1"
+					style="width: 25%; border: 2px solid #669bbc;">
+
+					<h:outputLabel value="Data e Hora:" />
+					<p:datePicker id="time"
+						value="#{agendamentoBean.agenda.dataHoraConsulta}" showIcon="true"  showButtonBar="true" showTime="true" timeInput="true"  required="true" requiredMessage="Campo obrigatório" mindate="#{agendamentoBean.dataAtual}"/>
+
+				</p:panelGrid>
+
+				<div style="margin-top: 20px">
+					<p:commandButton id="formulario" action="#{agendamentoBean.save}" value="Salvar"
+						update="formulario" style="background-color: #1b2144" />
+
+					<p:link outcome="agendamentos" value="Ver todos" />
+				</div>
+
+
+			</div>
+
+		</div>
+
+	</h:form>
+</h:body>
+</html>

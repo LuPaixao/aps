@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Listar IMC</title>
+</h:head>
+<h:body style="background-color: #d9d9ec;">
+
+<h1 style="font-family: Arial, sans-serif; font-weight: 600;">Listagem IMC</h1>
+	<h3 style="font-family: Arial, sans-serif; font-weight: normal;">Confira
+		abaixo todos os imc!</h3>
+
+ 	<p:dataTable value="#{pacienteBean.listarPacientes()}" var="paciente">
+        <p:column headerText="ID">
+            <h:outputText value="#{paciente.id}" />
+        </p:column>
+        <p:column headerText="Documento">
+            <h:outputText value="#{paciente.documento}" />
+        </p:column>
+        <p:column headerText="Nome">
+            <h:outputText value="#{paciente.nome}" />
+        </p:column>
+        <p:column headerText="Sexo">
+            <h:outputText value="#{paciente.sexo}" />
+        </p:column>
+        <p:column headerText="Data de nascimento">
+            <h:outputText value="#{paciente.dataNascimento}" />
+        </p:column>
+        <p:column headerText="Imc">
+            <h:outputText value="#{paciente.imc.resultado}" />
+        </p:column>
+    </p:dataTable>
+
+	<div style="margin-top: 20px">
+			<p:link outcome="paciente" value="Voltar"
+				style="font-size: 20" />
+	</div>
+		
+</h:body>
+</html>
